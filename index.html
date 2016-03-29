@@ -3,19 +3,21 @@
 <head>
 	<meta charset="UTF-8">
 	<title>SKB Kontur test task</title>
-	<script src="dist/src/Util.js"></script>
-	<script src="dist/src/Matrix.js"></script>
+	<script src="dist/Util.js"></script>
+	<script src="dist/Matrix.js"></script>
 </head>
 <body>
-	<div>
+	<div id="leftPanel">
 		<button>Умножить матрицы</button>
 		<br>
 		<button>Очистить матрицы</button>
 		<br>
 		<button>Поменять матрицы</button>
 		<br>
-		<input type="radio" name="matrix" checked> Матрица A
-		<input type="radio" name="matrix"> Матрица B
+		<input type="radio" name="matrix" id="matrixAradio" checked>
+		<label for="matrixAradio">Матрица A</label>
+		<input type="radio" name="matrix" id="matrixBradio">
+		<label for="matrixBradio">Матрица B</label>
 		<br>
 		<button>Добавить</button>
 		<button>Удалить</button>
@@ -25,12 +27,33 @@
 		<button>Удалить</button>
 		столбец
 	</div>
-	<div>
-
+	<div id="rightPanel">
+		<div id="result"></div>
+		<div id="matrixA"></div>
+		<div id="matrixB"></div>
 	</div>
 </body>
 <script>
 	"use strict";
 	let a = new Matrix();
+	function draw (matrix, element) {
+		let table = document.createElement('table');
+		table.border = 1;
+		element.appendChild(table);
+
+		for(let row of matrix.getValue()) {
+			let tr = document.createElement('tr');
+			table.appendChild(tr);
+			for(let cell of row) {
+				let td = document.createElement('td');
+				tr.appendChild(td);
+				let input = document.createElement('input');
+				td.appendChild(input);
+				input.size = 3;
+				input.value = cell;
+			}
+		}
+	}
+	draw(a, document.getElementById('matrixA'));
 </script>
 </html>

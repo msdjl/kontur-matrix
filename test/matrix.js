@@ -1,8 +1,8 @@
 "use strict";
 const chai = require('chai');
 const expect = chai.expect;
-const clone = require('../dist/src/Util').clone;
-const Matrix = require('../dist/src/Matrix');
+const clone = require('../dist/Util').clone;
+const Matrix = require('../dist/Matrix');
 const defaultMatrix = [[0,0],[0,0]];
 const someMatrix = [[1,0],[2,1]];
 const someBigMatrix = [[1,2,3,4,5],[5,4,3,2,1],[0,5,7,6,6],[1,4,6,3,6]];
